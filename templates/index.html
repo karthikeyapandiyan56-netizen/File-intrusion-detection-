@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise FIM | File Integrity Monitor</title>
+    <!-- Professional Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i data-lucide="shield-check" class="brand-icon"></i>
+                <span class="brand-text">Enterprise FIM</span>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-item active">
+                    <i data-lucide="layout-dashboard"></i>
+                    Dashboard
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav">
+                <div class="page-title">
+                    <h1>Dashboard Overview</h1>
+                    <p class="text-muted">Real-time cryptographic file integrity monitoring</p>
+                </div>
+                <div class="system-status">
+                    <span class="status-indicator" id="system-status"></span>
+                    <span id="status-text" class="status-label">System Initialization...</span>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="card col-span-2">
+                    <div class="card-header">
+                        <h2>Monitoring Controls</h2>
+                    </div>
+                    <div class="card-body controls-body">
+                        <div class="control-info">
+                            <p class="text-muted">Target Directory: <code>/my_files</code></p>
+                            <p class="text-muted">Hashing Algorithm: <strong>SHA-256</strong></p>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="btn-baseline" class="btn btn-secondary">
+                                <i data-lucide="database"></i>
+                                Initialize Baseline
+                            </button>
+                            <button id="btn-check" class="btn btn-primary">
+                                <i data-lucide="activity"></i>
+                                Perform Integrity Scan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2>Recent Integrity Events</h2>
+                    <span class="badge" id="event-count">0 Events</span>
+                </div>
+                <div class="card-body p-0">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Event Type</th>
+                                <th>Target File</th>
+                                <th>Severity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alerts-container">
+                            <tr class="empty-row">
+                                <td colspan="4">No security events detected. System is secure.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
